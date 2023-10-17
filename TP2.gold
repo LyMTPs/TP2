@@ -3,12 +3,15 @@ using gold.**
 // ANDERSON AREVALO MENDOZA
 // TOKENS:
 // Forward  - Token:F
+//  FD- Token:F
 // Penup -Token:U
 // Pendown -Token:P
 // Repeat - Token :W
 // NUMEROS - Token: D
 // Right - Token: R
+// RT - Token: R
 // Left - Token: L
+// LT - Token: L
 // [ Token: O
 // ] - Token: C
 // -----------------------
@@ -17,8 +20,7 @@ procedure main(args:String[]) begin
 				"L1","L2","L3","C2","C3", "C4","C5", "U1","U2","U3", "U4",
 				"D1", "D2","D3","NUM", "COR","ERR","TR", "TRP","NUML","TRL"
 				}
-	otro := {0‥3} ∪ {1‥3} ∪ {2,3} ∪ {3}
-	print (otro[0])
+	
 	Alf := {'T', 'R', 'O', 'P', ']', 'H', 'F', 'I', 'L', '[', 'U', 'D', 'E', 'N', 'W', 'G', 'A', ' ', 'C'} ∪ ('0'‥'9') 
 	Ini := "ST"
 	Fin := {"COR", "TR", "ST", "ERR", "TRP", "TRL"}
@@ -40,20 +42,30 @@ function Tr(est,sim) begin
 		else return "COR"
 		end
 
-	elseif est="F1" && sim ='O'   then return "F2"
+	elseif est="F1" then 
+		if sim ='O'   then return "F2"
+		elseif sim='D' then return "NUM"
+		else return "ERR"
+		end
+		
 	elseif est="F2" && sim ='R'   then return "F3"
 	elseif est="F3" && sim ='W'   then return "F4"
 	elseif est="F4" && sim ='A'   then return "F5"
 	elseif est="F5" && sim ='R'   then return "F6"
 	elseif est="F6" && sim ='D'   then return "NUM"
 	
-	elseif est="L1" && sim ='E'   then return "L2"
+	elseif est="L1" then 
+		 if sim ='E'   then return "L2"
+		 elseif sim='T' then return "NUM"
+		 else return "ERR"
+		 end
 	elseif est="L2" && sim ='F'   then return "L3"
 	elseif est="L3" && sim ='T'   then return "NUM"
 		
 	elseif est="R1" then 
 		if sim ='I'   then return "R2"
 		elseif sim ='E'  then return "C2"
+		elseif sim='T' then return "NUM"
 		else return "ERR"
 		end
 	elseif est="R2" && sim ='G'   then return "R3"
@@ -67,7 +79,7 @@ function Tr(est,sim) begin
 	elseif est="NUML"  && sim =' '   then return "NUML"
 	elseif est="NUML" && sim in ('0'‥'9')   then return "TRL"
 	elseif est= "TRL" && sim = '[' then return "ST"
-	elseif est= "TRL" && sim = ' ' then return "ST"
+	elseif est= "TRL" && sim = ' ' then return "TRL"
 	
 		
 	
@@ -97,12 +109,15 @@ function ImpEst(est) begin
 end
 function ImpFle(est,sim) begin
 	if est = "F6" then 	return String.valueOf('F')
+	elseif est="F1" && sim='D' then return String.valueOf('F')
+	elseif est="L1" && sim='T' then return String.valueOf('L')
 	elseif est = "NUM" && sim in ('0'‥'9') then return String.valueOf('D')
 	elseif est = "NUML" && sim in ('0'‥'9') then return String.valueOf('D')
 	elseif est="D3" && sim ='N' then return String.valueOf('P')
 	elseif est="C5" && sim ='T' then return String.valueOf('W')
 	elseif est="U4" then return String.valueOf('U')
 	elseif est="R4" then return String.valueOf('R')
+	elseif est="R1" && sim ='T' then return String.valueOf('R')
 	elseif est="L3" then return String.valueOf('L')
 	elseif est= "TRL" && sim = '[' then return String.valueOf('O')
 	elseif est= "ST" && sim = ']' then 	return String.valueOf('C')
