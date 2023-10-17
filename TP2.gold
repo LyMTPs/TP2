@@ -1,0 +1,111 @@
+using gold.**
+procedure main(args:String[]) begin
+	Est := {"ST","F1","F2","F3","F4","F5","F6", "F11","F21","F31","F41","F51","F61", "R1","R2","R3", "R4", "R11","R21","R31", "R41",
+				"L1","L2","L3","L11","L21","L31","C11","C2","C3", "C4","C5", "U1","U2","U3", "U4",
+				"D1", "D2","D3","NUM","LR","RR", "COR","ERR","TR", "TRP","NUML","TRL"
+				}
+	Alf := {'T', 'R', 'O', 'P', ']', 'H', 'F', 'I', 'L', '[', 'U', 'D', 'E', 'N', 'W', 'G', 'A', ' ', 'C'} ∪ ('0'‥'9') 
+	Ini := "ST"
+	Fin := {"COR", "TR", "ST", "ERR", "TRP", "TRL"}
+	M := GDeterministicTransducer(Est,Alf,Alf,Ini,Fin,Tr,ImpEst,ImpFle)
+	GAutomataFrame.show(M)
+end
+function Tr(est,sim) begin
+	if est="ST" && sim ='F' then return "F1"
+	elseif est="ST" && sim ='R' then return "R1"
+	elseif est="ST" && sim ='L' then return "L1"
+	elseif est="ST" && sim ='P' then return "U1"
+	
+	elseif est="TRP" && sim =' ' then return "ST"
+	elseif est="TR" then
+		if sim =' ' then return "ST"
+		elseif sim in ('0'‥'9')   then return "TR"
+		else return "COR"
+		end
+
+	elseif est="F1" && sim ='O'   then return "F2"
+	elseif est="F2" && sim ='R'   then return "F3"
+	elseif est="F3" && sim ='W'   then return "F4"
+	elseif est="F4" && sim ='A'   then return "F5"
+	elseif est="F5" && sim ='R'   then return "F6"
+	elseif est="F6" && sim ='D'   then return "NUM"
+	
+	elseif est="L1" && sim ='E'   then return "L2"
+	elseif est="L2" && sim ='F'   then return "L3"
+	elseif est="L3" && sim ='T'   then return "NUM"
+		
+	elseif est="R1" then 
+		if sim ='I'   then return "R2"
+		elseif sim ='E'  then return "C2"
+		else return "ERR"
+		end
+	elseif est="R2" && sim ='G'   then return "R3"
+	elseif est="R3" && sim ='H'   then return "R4"
+	elseif est="R4" && sim ='T'   then return "NUM"
+		
+	elseif est="C2" && sim ='P'   then return "C3"
+	elseif est="C3" && sim ='E'   then return "C4"
+	elseif est="C4" && sim ='A'   then return "C5"
+	elseif est="C5" && sim ='T'   then return "NUML"
+	elseif est="NUML"  && sim =' '   then return "NUML"
+	elseif est="NUML" && sim in ('0'‥'9')   then return "TRL"
+	elseif est= "TRL" && sim = '[' then return "TRL"
+	elseif est= "TRL" && sim = ' ' then return "TRL"
+	elseif est= "TRL" && sim = ']' then return "TRL"
+	elseif est= "TRL" && sim = 'F' then return "F11"
+	elseif est= "TRL" && sim = 'F' then return "F11"
+	elseif est= "TRL" && sim = 'R' then return "R11"
+	elseif est= "TRL" && sim = 'L' then return "L11"
+	elseif est="F11" && sim ='O'   then return "F21"
+	elseif est="F21" && sim ='R'   then return "F31"
+	elseif est="F31" && sim ='W'   then return "F41"
+	elseif est="F41" && sim ='A'   then return "F51"
+	elseif est="F51" && sim ='R'   then return "F61"
+	elseif est="F61" && sim ='D'   then return "NUML"
+	elseif est="R11" &&  sim ='I' then return "R21"
+	elseif est="R21" && sim ='G'   then return "R31"
+	elseif est="R31" && sim ='H'   then return "R41"
+	elseif est="R41" && sim ='T'   then return "NUML"
+	elseif est="L11" && sim ='E'   then return "L21"
+	elseif est="L21" && sim ='F'   then return "L31"
+	elseif est="L31" && sim ='T'   then return "NUML"
+	
+	elseif est="U1" && sim ='E'   then return "U2"
+	elseif est="U2" && sim ='N'   then return "U3"	
+	
+	elseif est="U3" then 
+		if sim ='U'   then return "U4"
+		elseif sim ='D'  then return "D1"
+		else return "ERR"
+		end
+	
+	elseif est="U4" && sim ='P'   then return "TRP"	
+	
+	elseif est="D1" && sim ='O'   then return "D2"	
+	elseif est="D2" && sim ='W'   then return "D3"
+	elseif est="D3" && sim ='N'   then return "TRP"	
+		
+	
+	elseif est="NUM"  && sim =' '   then return "NUM"
+	elseif est="NUM" && sim in ('0'‥'9')   then return "TR"
+	else return "ERR"
+	end
+end
+function ImpEst(est) begin
+	return λ
+end
+function ImpFle(est,sim) begin
+	if est = "F6" then 	return String.valueOf('F')
+	elseif est = "NUM" && sim in ('0'‥'9') then return String.valueOf('D')
+	elseif est="NUML" && sim in ('0'‥'9') then return String.valueOf('D')
+	elseif est="D3" && sim ='N' then return String.valueOf('P')
+	elseif est="C5" && sim ='T' then return String.valueOf('C')
+	elseif est="U4" then return String.valueOf('U')
+	elseif est="R4" then return String.valueOf('R')
+	elseif est="L3" then return String.valueOf('L')
+	elseif est= "TRL" && sim = '[' then return String.valueOf('L')
+	elseif est= "TRL" && sim = ']' then 	return String.valueOf('L')
+	else
+		return λ
+	end
+end

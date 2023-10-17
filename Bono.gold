@@ -1,0 +1,277 @@
+using gold.**
+procedure main(args:String[]) begin
+	Est := {'S','A','B','C','D','E','F','G','H','I','J'}
+	Alf :=  ('0'‥'9') 
+	Out := Alf ∪ {'+','-','='}
+	Ini := 'S'
+	Fin := {'A','B','C','D','E','F','G','H','I','J'}
+	M := GDeterministicTransducer(Est,Alf,Out,Ini,Fin,Tr,ImpEst,ImpFle)
+	GAutomataFrame.show(M)
+end
+
+function Tr(est,sim) begin
+	if est='S' then 
+		if sim='0' then return 'A'
+		elseif sim='1' then return 'B'
+		elseif sim='2' then return 'C'
+		elseif sim='3' then return 'D'
+		elseif sim='4' then return 'E'
+		elseif sim='5' then return 'F'
+		elseif sim='6' then return 'G'
+		elseif sim='7' then return 'H'
+		elseif sim='8' then return 'I'
+		else return 'J'
+		end
+	elseif est='A' then
+		if sim='0' then return 'A'
+		elseif sim='1' then return 'B'
+		elseif sim='2' then return 'C'
+		elseif sim='3' then return 'D'
+		elseif sim='4' then return 'E'
+		elseif sim='5' then return 'F'
+		elseif sim='6' then return 'G'
+		elseif sim='7' then return 'H'
+		elseif sim='8' then return 'I'
+		else return 'J'
+		end
+	elseif est='B' then
+		if sim='0' then return 'A'
+		elseif sim='1' then return 'B'
+		elseif sim='2' then return 'C'
+		elseif sim='3' then return 'D'
+		elseif sim='4' then return 'E'
+		elseif sim='5' then return 'F'
+		elseif sim='6' then return 'G'
+		elseif sim='7' then return 'H'
+		elseif sim='8' then return 'I'
+		else return 'J'
+		end
+	elseif est='C' then
+		if sim='0' then return 'A'
+		elseif sim='1' then return 'B'
+		elseif sim='2' then return 'C'
+		elseif sim='3' then return 'D'
+		elseif sim='4' then return 'E'
+		elseif sim='5' then return 'F'
+		elseif sim='6' then return 'G'
+		elseif sim='7' then return 'H'
+		elseif sim='8' then return 'I'
+		else return 'J'
+		end
+	elseif est='D' then
+		if sim='0' then return 'A'
+		elseif sim='1' then return 'B'
+		elseif sim='2' then return 'C'
+		elseif sim='3' then return 'D'
+		elseif sim='4' then return 'E'
+		elseif sim='5' then return 'F'
+		elseif sim='6' then return 'G'
+		elseif sim='7' then return 'H'
+		elseif sim='8' then return 'I'
+		else return 'J'
+		end
+	elseif est='E' then
+		if sim='0' then return 'A'
+		elseif sim='1' then return 'B'
+		elseif sim='2' then return 'C'
+		elseif sim='3' then return 'D'
+		elseif sim='4' then return 'E'
+		elseif sim='5' then return 'F'
+		elseif sim='6' then return 'G'
+		elseif sim='7' then return 'H'
+		elseif sim='8' then return 'I'
+		else return 'J'
+		end
+	elseif est='F' then
+		if sim='0' then return 'A'
+		elseif sim='1' then return 'B'
+		elseif sim='2' then return 'C'
+		elseif sim='3' then return 'D'
+		elseif sim='4' then return 'E'
+		elseif sim='5' then return 'F'
+		elseif sim='6' then return 'G'
+		elseif sim='7' then return 'H'
+		elseif sim='8' then return 'I'
+		else return 'J'
+		end
+	elseif est='G' then
+		if sim='0' then return 'A'
+		elseif sim='1' then return 'B'
+		elseif sim='2' then return 'C'
+		elseif sim='3' then return 'D'
+		elseif sim='4' then return 'E'
+		elseif sim='5' then return 'F'
+		elseif sim='6' then return 'G'
+		elseif sim='7' then return 'H'
+		elseif sim='8' then return 'I'
+		else return 'J'
+		end
+	elseif est='H' then
+		if sim='0' then return 'A'
+		elseif sim='1' then return 'B'
+		elseif sim='2' then return 'C'
+		elseif sim='3' then return 'D'
+		elseif sim='4' then return 'E'
+		elseif sim='5' then return 'F'
+		elseif sim='6' then return 'G'
+		elseif sim='7' then return 'H'
+		elseif sim='8' then return 'I'
+		else return 'J'
+		end
+	elseif est='I' then
+		if sim='0' then return 'A'
+		elseif sim='1' then return 'B'
+		elseif sim='2' then return 'C'
+		elseif sim='3' then return 'D'
+		elseif sim='4' then return 'E'
+		elseif sim='5' then return 'F'
+		elseif sim='6' then return 'G'
+		elseif sim='7' then return 'H'
+		elseif sim='8' then return 'I'
+		else return 'J'
+		end
+	else
+		if sim='0' then return 'A'
+		elseif sim='1' then return 'B'
+		elseif sim='2' then return 'C'
+		elseif sim='3' then return 'D'
+		elseif sim='4' then return 'E'
+		elseif sim='5' then return 'F'
+		elseif sim='6' then return 'G'
+		elseif sim='7' then return 'H'
+		elseif sim='8' then return 'I'
+		else return 'J'
+		end
+	end
+	
+end
+function ImpEst(est) begin
+	return λ
+end
+function ImpFle(est,sim) begin
+
+	if est='A' then
+		if sim='0' then return '='
+		elseif sim='1' then return "+1"
+		elseif sim='2' then return "+2"
+		elseif sim='3' then return "+3"
+		elseif sim='4' then return "+4"
+		elseif sim='5' then return "+5"
+		elseif sim='6' then return "+6"
+		elseif sim='7' then return "+7"
+		elseif sim='8' then return "+8"
+		else return "+9"
+		end
+	elseif est='B' then
+		if sim='0' then return "-1"
+		elseif sim='1' then return '='
+		elseif sim='2' then return "+1"
+		elseif sim='3' then return "+2"
+		elseif sim='4' then return "+3"
+		elseif sim='5' then return "+4"
+		elseif sim='6' then return "+5"
+		elseif sim='7' then return "+6"
+		elseif sim='8' then return "+7"
+		else return "+8"
+		end
+	elseif est='C' then
+		if sim='0' then return "-2"
+		elseif sim='1' then return "-1"
+		elseif sim='2' then return '='
+		elseif sim='3' then return "+1"
+		elseif sim='4' then return "+2"
+		elseif sim='5' then return "+3"
+		elseif sim='6' then return "+4"
+		elseif sim='7' then return "+5"
+		elseif sim='8' then return "+6"
+		else return "+7"
+		end
+	elseif est='D' then
+		if sim='0' then return "-3"
+		elseif sim='1' then return "-2"
+		elseif sim='2' then return "-1"
+		elseif sim='3' then return '='
+		elseif sim='4' then return "+1"
+		elseif sim='5' then return "+2"
+		elseif sim='6' then return "+3"
+		elseif sim='7' then return "+4"
+		elseif sim='8' then return "+5"
+		else return "+6"
+		end
+	elseif est='E' then
+		if sim='0' then return "-4"
+		elseif sim='1' then return "-3"
+		elseif sim='2' then return "-2"
+		elseif sim='3' then return "-1"
+		elseif sim='4' then return '='
+		elseif sim='5' then return "+1"
+		elseif sim='6' then return "+2"
+		elseif sim='7' then return "+3"
+		elseif sim='8' then return "+4"
+		else return "+5"
+		end
+	elseif est='F' then
+		if sim='0' then return "-5"
+		elseif sim='1' then return "-4"
+		elseif sim='2' then return "-3"
+		elseif sim='3' then return "-2"
+		elseif sim='4' then return "-1"
+		elseif sim='5' then return '='
+		elseif sim='6' then return "+1"
+		elseif sim='7' then return "+2"
+		elseif sim='8' then return "+3"
+		else return "+4"
+		end
+	elseif est='G' then
+		if sim='0' then return "-6"
+		elseif sim='1' then return "-5"
+		elseif sim='2' then return "-4"
+		elseif sim='3' then return "-3"
+		elseif sim='4' then return "-2"
+		elseif sim='5' then return "-1"
+		elseif sim='6' then return '='
+		elseif sim='7' then return "+1"
+		elseif sim='8' then return "+2"
+		else return "+3"
+		end
+	elseif est='H' then
+		if sim='0' then return "-7"
+		elseif sim='1' then return "-6"
+		elseif sim='2' then return "-5"
+		elseif sim='3' then return "-4"
+		elseif sim='4' then return "-3"
+		elseif sim='5' then return "-2"
+		elseif sim='6' then return "-1"
+		elseif sim='7' then return '='
+		elseif sim='8' then return "+1"
+		else return "+2"
+		end
+	elseif est='I' then
+		if sim='0' then return "-8"
+		elseif sim='1' then return "-7"
+		elseif sim='2' then return "-6"
+		elseif sim='3' then return "-5"
+		elseif sim='4' then return "-4"
+		elseif sim='5' then return "-3"
+		elseif sim='6' then return "-2"
+		elseif sim='7' then return "-1"
+		elseif sim='8' then return '='
+		else return "+1"
+		end
+	elseif est='J' then
+		if sim='0' then return "-9"
+		elseif sim='1' then return "-8"
+		elseif sim='2' then return "-7"
+		elseif sim='3' then return "-6"
+		elseif sim='4' then return "-5"
+		elseif sim='5' then return "-4"
+		elseif sim='6' then return "-3"
+		elseif sim='7' then return "-2"
+		elseif sim='8' then return "-1"
+		else return '='
+		end
+	else
+		return sim
+	end
+	
+end
